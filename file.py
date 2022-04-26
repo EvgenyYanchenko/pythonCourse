@@ -1,3 +1,3 @@
-f = open("1.doc","r")
+f = open("class.py","r")
 print(f.read())
 f.close()
