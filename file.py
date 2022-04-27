@@ -1,3 +1,3 @@
-f = open("class.py","r")
+f = open("EGE.py","r")
 print(f.read())
 f.close()
