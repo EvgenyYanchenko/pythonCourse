@@ -20,16 +20,18 @@ class App(QWidget):
         self.get_list_direcrory('D:/')
 
 
+
     def start(self):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
+
 
 
     def set(self):
         self.ui.pushButton_5.clicked.connect(lambda: self.click())
 
     def show_path(self,path):
-        self.ui.label.text(path)
+        self.ui.textBrowser.setText(path)
 
     def get_list_direcrory(self, path):
         print(os.listdir(path))
@@ -38,6 +40,8 @@ class App(QWidget):
 
     def click(self,num='text'):
         self.table1set(text=num)
+        self.show_path('eee')
+
 
 
     def table1set(self,text='text'):
