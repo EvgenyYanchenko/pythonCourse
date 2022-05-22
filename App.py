@@ -17,6 +17,7 @@ class App(QWidget):
     def __init__(self):
         self.start()
         self.set()
+        self.get_list_direcrory('D:/')
 
 
     def start(self):
@@ -27,13 +28,25 @@ class App(QWidget):
     def set(self):
         self.ui.pushButton_5.clicked.connect(lambda: self.click())
 
+    def show_path(self,path):
+        self.ui.label.text(path)
+
+    def get_list_direcrory(self, path):
+        print(os.listdir(path))
+
+
+
     def click(self,num='text'):
         self.table1set(text=num)
+
 
     def table1set(self,text='text'):
        print(text)
        self.ui.tableWidget.setRowCount(3)
        self.ui.tableWidget.setItem(0,0,QTableWidgetItem(str(text*2)))
+
+
+
 
 
 
