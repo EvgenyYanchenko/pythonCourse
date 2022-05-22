@@ -11,19 +11,30 @@ except:
     from PyQt4.QtCore import *
 
 import os
+import string
 
 
 class App(QWidget):
     def __init__(self):
         self.start()
         self.set()
-        self.get_list_direcrory('D:/')
+        #self.get_list_direcrory('')
+        self.get_disklist()
 
 
 
     def start(self):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
+
+    def get_disklist(self):
+        disk_list = []
+        for c in string.ascii_uppercase:
+            disk = c + ':'
+            if os.path.isdir(disk):
+                disk_list.append(disk)
+        return print(disk_list)
+
 
 
 
