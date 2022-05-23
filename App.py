@@ -18,8 +18,10 @@ class App(QWidget):
     def __init__(self):
         self.start()
         self.set()
-        #self.get_list_direcrory('')
         self.get_disklist()
+        self.create_Disk_Bar()
+        #self.get_disklist()
+
 
 
 
@@ -27,15 +29,24 @@ class App(QWidget):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
 
+
     def get_disklist(self):
         disk_list = []
         for c in string.ascii_uppercase:
             disk = c + ':'
             if os.path.isdir(disk):
                 disk_list.append(disk)
-        return print(disk_list)
+        return disk_list
 
 
+
+
+
+    def create_Disk_Bar(self, list=get_disklist):
+        print('work')
+        self.ui.radioButton_1.setText(str(list))
+
+    #    lbl = self.Label(self.window, text='each_contact').place(x=5, y=5)
 
 
     def set(self):
