@@ -18,9 +18,10 @@ class App(QWidget):
     def __init__(self):
         self.start()
         self.set()
-        self.get_disklist()
-        self.create_Disk_Bar()
+
         #self.get_disklist()
+        self.create_Disk_Bar()
+
 
 
 
@@ -28,6 +29,7 @@ class App(QWidget):
     def start(self):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
+
 
 
     def get_disklist(self):
@@ -41,12 +43,18 @@ class App(QWidget):
 
 
 
+#  Naming all radioButton
+    def create_Disk_Bar(self, list=[]):
+        list=self.get_disklist()
+        print(len(list))
+        counter =0
+        for i in list:
+            counter+=1
+            radioBTNname ="radioButton_"+str(counter)
+            print(radioBTNname)
 
-    def create_Disk_Bar(self, list=get_disklist):
-        print('work')
-        self.ui.radioButton_1.setText(str(list))
 
-    #    lbl = self.Label(self.window, text='each_contact').place(x=5, y=5)
+
 
 
     def set(self):
