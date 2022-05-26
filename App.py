@@ -18,9 +18,9 @@ class App(QWidget):
     def __init__(self):
         self.start()
         self.set()
-
-        #self.get_disklist()
+        self.set_disk('D:/')
         self.create_Disk_Bar()
+        self.generate_Dict()
 
 
 
@@ -29,6 +29,21 @@ class App(QWidget):
     def start(self):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
+
+    #создаем словарь чекбокс=диск
+    def generate_Dict(self,list=[]):
+        list = self.get_disklist()
+        Disks = dict()
+
+        Disks['radioButton_1'] = list[0]
+        Disks['radioButton_2'] = list[1]
+        Disks['radioButton_3'] = list[2]
+       # Disks['radioButton_4'] = list[3]
+
+
+
+    def set_disk(self,path='C:/'):
+        self.ui.textBrowser.setText(path)
 
 
 
@@ -41,46 +56,27 @@ class App(QWidget):
         return disk_list
 
 
-
-
 #  Naming all radioButton
     def create_Disk_Bar(self, list=[]):
         list=self.get_disklist()
         print(len(list))
-        counter =0
-        for i in list:
-            counter+=1
-            radioBTNname ="radioButton_"+str(counter)
-            print(radioBTNname)
-
-
-
 
 
     def set(self):
         self.ui.pushButton_5.clicked.connect(lambda: self.click())
 
-    def show_path(self,path):
-        self.ui.textBrowser.setText(path)
+
 
     def get_list_direcrory(self, path):
         print(os.listdir(path))
 
-
-
     def click(self,num='text'):
         self.table1set(text=num)
-        self.show_path('eee')
-
-
 
     def table1set(self,text='text'):
        print(text)
        self.ui.tableWidget.setRowCount(3)
        self.ui.tableWidget.setItem(0,0,QTableWidgetItem(str(text*2)))
-
-
-
 
 
 
