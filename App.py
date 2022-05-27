@@ -1,4 +1,5 @@
 import sys
+
 from PyQt5.QtWidgets import  QApplication, QWidget
 from PyQt5 import uic
 try:
@@ -20,6 +21,7 @@ class App(QWidget):
         self.set()
         self.set_disk('D:/')
         self.create_Disk_Bar()
+
         self.generate_Dict()
 
 
@@ -30,15 +32,30 @@ class App(QWidget):
         self.ui = uic.loadUi("FileManagerMainWindow.ui")
         self.ui.show()
 
+
     #создаем словарь чекбокс=диск
     def generate_Dict(self,list=[]):
-        list = self.get_disklist()
-        Disks = dict()
+        #  делаем невидимые все radioButton (диски) кроме C
+        self.ui.radioButton_2.setHidden(True)
+        self.ui.radioButton_3.setHidden(True)
+        self.ui.radioButton_4.setHidden(True)
+        self.ui.radioButton_5.setHidden(True)
 
-        Disks['radioButton_1'] = list[0]
-        Disks['radioButton_2'] = list[1]
-        Disks['radioButton_3'] = list[2]
-       # Disks['radioButton_4'] = list[3]
+        # заполняем названиями дисков radioButtonы
+        list = self.get_disklist()
+
+        if list[0].isalpha():
+            print("list 0 cont str "+list[0])
+            self.ui.radioButton_1.setText(list[0])
+        else:
+            print("no str "+list[0])
+        #self.ui.radioButton_2.setText(list[1])
+        #self.ui.radioButton_3.setText(list[2])
+        #self.ui.radioButton_4.setText(list[3])
+        #self.ui.radioButton_5.setText(list[4])
+
+
+
 
 
 
@@ -72,6 +89,11 @@ class App(QWidget):
 
     def click(self,num='text'):
         self.table1set(text=num)
+        #Создание кнопки)))
+        self.ui.btn = QPushButton(self)
+        self.ui.btn.setText(num)
+        self.ui.btn.resize(20, 20)
+
 
     def table1set(self,text='text'):
        print(text)
