@@ -89,10 +89,7 @@ class App(QWidget):
 
     def click(self,num='text'):
         self.table1set(text=num)
-        #Создание кнопки)))
-        self.ui.btn = QPushButton(self)
-        self.ui.btn.setText(num)
-        self.ui.btn.resize(20, 20)
+
 
 
     def table1set(self,text='text'):
